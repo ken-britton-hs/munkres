@@ -358,11 +358,9 @@ func Test_ComputeMunkres(t *testing.T) {
 		20, 29, 32, 25,
 		37, 72, 17, 73}
 	origDbg := Debugger
-	var debuggerCalled bool
 	Debugger = func(s Step, ctx *Context) {
 		assert.NotNil(t, s)
 		assert.NotNil(t, ctx)
-		debuggerCalled = true
 	}
 	defer func() { Debugger = origDbg }()
 	for _, assignment := range ComputeMunkresMin(m) {
